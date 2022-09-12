@@ -1,0 +1,24 @@
+specVersion: 0.0.4
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: LepakLifeStyleMember
+    network: rinkeby
+    source:
+      address: "0xefd28303826dad00df7a4c09dd749945fe79d7ca"
+      abi: LepakLifeStyleMember
+      startBlock: 11350410
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Member
+      abis:
+        - name: LepakLifeStyleMember
+          file: LepakLifeStyleMember/abis/LepakLifeStyleMember.json
+      eventHandlers:
+        - event: newLifestyleMember(indexed uint256,address,uint256)
+          handler: handlenewLifestyleMember
+      file: LepakLifeStyleMember/LepakLifeStyleMember.wasm
